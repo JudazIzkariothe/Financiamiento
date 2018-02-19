@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	 <data>
+	 	<!--  Datos que vemos en el tree -->
+	 	<record id="financiamiento_modelo_tree" model="ir.ui.view">
+	 		<field name="name">financiamiento.modelo.tree</field>
+	 		<field name="model">financiamiento.modelo</field>
+            	<field name="arch" type="xml"> 
+            	   <tree> 
+                      
+            	   	    <field name="nombre" string="Nombre"/>
+            	   	    <field name="apellidop" string="Apellido Paterno" />
+                      <field name="apellidom" string="Apellido Materno" />
+                      <field name="rfc" string="RFC" />
+                      <field name="colonia" string="Colonia" />
+                      <field name="domicilio" string="Domicilio" />
+                      <field name="estado" string="Estado" />
+                      <field name="municipio" string="Municipio" />
+                      <field name="localidad" string="Localidad" />
+                      <field name="cp" string="Codigo Postal" />
+                      <field name="telefono" string="Teléfono" />
+                      <field name="correo" string="Correo" />
+            	   </tree>      	
+                </field>
+	    </record>
+
+
+	   <!--  Datos que vemos en el Form  -->
+	 	<record id="financiamiento_modelo_form" model="ir.ui.view">
+	 		<field name="name">financiamiento.modelo.form</field>
+	 		<field name="model">financiamiento.modelo</field>
+            	<field name="arch" type="xml"> 
+            	   <form string ="Formulario para Registro" version="9.0">
+            	   	<!--  Cuerpo  -->
+            	   	<sheet>
+                        <h1>Registro Financiamiento</h1>
+            	   	<group> 
+            	   	  <field name="nombre" />
+                      <field name="apellidop" />
+                      <field name="apellidom" />
+                      <field name="rfc" />
+                      <field name="colonia" />
+                      <field name="domicilio" />
+                      <field name="estado" />
+                      <field name="municipio" />
+                      <field name="localidad" />
+                      <field name="cp" />
+                      <field name="telefono" />
+                      <field name="correo" />
+                      <field name="acreditacion_id"/>
+                    </group>                 
+            	   	</sheet>
+            	   	</form>      	
+                </field>
+	    </record>
+        
+    
+        <!--  Definimos los eventos -->
+        <record id="financiamiento_modelo_action" model="ir.actions.act_window">
+        	<field name="name">Financiamiento</field>
+        	<field name="res_model">financiamiento.modelo</field>
+        	<field name="view_type">form</field>
+        	<field name="view_mode">tree,form</field>
+        </record>
+
+        <!--  Definimos el menu-->
+        <menuitem id="financiamiento_modelo_menu" name="Financiamiento " />
+        <menuitem id="financiamiento_modelo_submenu" name="Registro" parent="financiamiento_modelo_menu" sequence="0" />
+
+        <!--  Enlazamos la acción al submenú-->
+        <menuitem id="Alumnos_modelo_menu_action" name="Financiamiento" parent="financiamiento_modelo_submenu" sequence="0" action="financiamiento_modelo_action"/>
+     </data>
+</openerp>

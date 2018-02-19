@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	 <data>
+	 	<!--  Datos que vemos en el tree Inicia 
+    ##################################################################
+       -->
+	 	<record id="acreditacion_modelo_tree" model="ir.ui.view">
+	 		<field name="name">acreditacion.modelo.tree</field>
+	 		<field name="model">acreditacion.modelo</field>
+            	<field name="arch" type="xml"> 
+            	   <tree> 
+            	   	    <field name="esquema_id" string="Esquema" />
+                      <field name="acreditacion" string="Acreditación" />
+            	   	    <field name="monto" string="Monto" />
+                      <field name="plazo" string="Plazo" />
+                      <field name="periodog" string="Período de Ganancia" />
+                      <field name="tazao" string="Tasa Ordinaria" />
+                      <field name="tipog" string="Tipo de Garantía" />
+            	   </tree>      	
+                </field>
+	    </record>
+
+  <record id="esquema_modelo_tree" model="ir.ui.view">
+      <field name="name">esquema.modelo.tree</field>
+      <field name="model">esquema.modelo</field>
+              <field name="arch" type="xml"> 
+                 <tree>
+                      <field name="esqnombre" string="Nombre" />
+                      <field name="montomin" string="Monto minimo" />
+                      <field name="montomax" string="Monto Maximo" />
+                      <field name="fechaini" string="Fecha Inicio" />
+                      <field name="fechafin" string="Fecha Fin" />
+                      <field name="status" string="Status" />
+                 </tree>        
+                </field>
+      </record>
+<!--  Datos que vemos en el tree Finaliza 
+    ##################################################################
+       -->
+	   <!--  Datos que vemos en el Form  -->
+	 	<record id="acreditacion_modelo_form" model="ir.ui.view">
+	 		<field name="name">acreditacion.modelo.form</field>
+	 		<field name="model">acreditacion.modelo</field>
+            	<field name="arch" type="xml"> 
+            	   <form string ="Registro Financiamiento" version="9.0">
+            	   	<!--  Cuerpo  -->
+            	   	<sheet>
+                      <h1>Registro Acreditación</h1>
+            	   	   <group> 
+            	   	    <field name="esquema_id" />
+                      <field name="acreditacion" />
+                      <field name="monto" />
+                      <field name="plazo" />
+                      <field name="periodog" />
+                      <field name="tazao" />
+                      <field name="tipog" />
+                     </group>                 
+            	   	</sheet>
+            	   </form>      	
+              </field>
+	    </record>
+    
+    <record id="esquema_modelo_form" model="ir.ui.view">
+      <field name="name">esquema.modelo.form</field>
+      <field name="model">esquema.modelo</field>
+              <field name="arch" type="xml"> 
+                 <form string ="Esquema" version="9.0">
+                  <!--  Cuerpo  -->
+                  <sheet>
+                      <h1>Esquema de Financiamiento</h1>
+                     <group> 
+                      <field name="esqnombre" />
+                      <field name="montomin" />
+                      <field name="montomax" />
+                      <field name="fechaini" />
+                      <field name="fechafin" />
+                      <field name="status" />
+                     </group>                 
+                  </sheet>
+                 </form>        
+              </field>
+      </record>
+
+            
+        <!--  Definimos los eventos -->
+        <record id="acreditacion_modelo_action" model="ir.actions.act_window">
+        	<field name="name">Acreditación</field>
+        	<field name="res_model">acreditacion.modelo</field>
+        	<field name="view_type">form</field>
+        	<field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="esquema_modelo_action" model="ir.actions.act_window">
+          <field name="name">Esquema</field>
+          <field name="res_model">esquema.modelo</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--  Definimos el menu-->
+      
+        <menuitem id="config_modelo_submenu" name="Configuracion" parent="financiamiento_modelo_menu" sequence="0" />
+
+        <!--  Enlazamos la acción al submenú-->
+        <menuitem id="acreditacion_modelo_menu_action" name="Acreditación" parent="config_modelo_submenu" sequence="0" action="acreditacion_modelo_action"/>
+        <menuitem id="esquema_modelo_menu_action" name="Esquema" parent="config_modelo_submenu" sequence="0" action="esquema_modelo_action"/>
+     </data>
+</openerp>
